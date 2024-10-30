@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.3...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.4...5.x)
+
+## [v5.2.4](https://github.com/laravel/telescope/compare/v5.2.3...v5.2.4) - 2024-10-29
+
+* [5.x] Fix `JobWatcher` when processing deleted instance of `SerializesModels` by [@hapidjus](https://github.com/hapidjus) in https://github.com/laravel/telescope/pull/1539
 
 ## [v5.2.3](https://github.com/laravel/telescope/compare/v5.2.2...v5.2.3) - 2024-10-13
 
