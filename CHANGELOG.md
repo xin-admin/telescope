@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.4...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.5...5.x)
+
+## [v5.2.5](https://github.com/laravel/telescope/compare/v5.2.4...v5.2.5) - 2024-10-31
+
+* Bump elliptic from 6.5.7 to 6.6.0 by [@dependabot](https://github.com/dependabot) in https://github.com/laravel/telescope/pull/1541
 
 ## [v5.2.4](https://github.com/laravel/telescope/compare/v5.2.3...v5.2.4) - 2024-10-29
 
