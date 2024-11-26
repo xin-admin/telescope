@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.5...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.6...5.x)
+
+## [v5.2.6](https://github.com/laravel/telescope/compare/v5.2.5...v5.2.6) - 2024-11-25
+
+* [5.x] Supports PHP 8.4 by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/telescope/pull/1544
+* [5.x] fix implicitly marking parameter as nullable by [@SupianIDz](https://github.com/SupianIDz) in https://github.com/laravel/telescope/pull/1550
 
 ## [v5.2.5](https://github.com/laravel/telescope/compare/v5.2.4...v5.2.5) - 2024-10-31
 
