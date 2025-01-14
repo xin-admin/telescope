@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.2.6...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.3.0...5.x)
+
+## [v5.3.0](https://github.com/laravel/telescope/compare/v5.2.6...v5.3.0) - 2024-12-26
+
+* [5.x] Tag client request hostname automatically by [@dshafik](https://github.com/dshafik) in https://github.com/laravel/telescope/pull/1553
+* Bump [@babel](https://github.com/babel)/traverse from 7.22.20 to 7.26.4 by [@dependabot](https://github.com/dependabot) in https://github.com/laravel/telescope/pull/1555
 
 ## [v5.2.6](https://github.com/laravel/telescope/compare/v5.2.5...v5.2.6) - 2024-11-25
 
