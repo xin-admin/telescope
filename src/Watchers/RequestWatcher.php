@@ -53,6 +53,7 @@ class RequestWatcher extends Watcher
             'headers' => $this->headers($event->request->headers->all()),
             'payload' => $this->payload($this->input($event->request)),
             'session' => $this->payload($this->sessionVariables($event->request)),
+            'response_headers' => $this->headers($event->response->headers->all()),
             'response_status' => $event->response->getStatusCode(),
             'response' => $this->response($event->response),
             'duration' => $startTime ? floor((microtime(true) - $startTime) * 1000) : null,
