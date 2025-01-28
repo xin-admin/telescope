@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.3.0...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.4.0...5.x)
+
+## [v5.4.0](https://github.com/laravel/telescope/compare/v5.3.0...v5.4.0) - 2025-01-24
+
+* [5.x] Save and view response headers by [@gdebrauwer](https://github.com/gdebrauwer) in https://github.com/laravel/telescope/pull/1561
+* [5.x] Ability to override how objects are serialized by [@duncanmcclean](https://github.com/duncanmcclean) in https://github.com/laravel/telescope/pull/1562
 
 ## [v5.3.0](https://github.com/laravel/telescope/compare/v5.2.6...v5.3.0) - 2024-12-26
 
