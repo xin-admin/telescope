@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.4.0...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.5.0...5.x)
+
+## [v5.5.0](https://github.com/laravel/telescope/compare/v5.4.0...v5.5.0) - 2025-02-11
+
+* [5.x] Config for queue delay by [@techieforfun](https://github.com/techieforfun) in https://github.com/laravel/telescope/pull/1563
+* Supports Laravel 12 by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/telescope/pull/1565
+* Ensure `formatForTelescope` method is used in request watcher by [@duncanmcclean](https://github.com/duncanmcclean) in https://github.com/laravel/telescope/pull/1566
+* Bump serialize-javascript from 6.0.1 to 6.0.2 by [@dependabot](https://github.com/dependabot) in https://github.com/laravel/telescope/pull/1567
 
 ## [v5.4.0](https://github.com/laravel/telescope/compare/v5.3.0...v5.4.0) - 2025-01-24
 
