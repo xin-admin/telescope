@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.5.0...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.5.1...5.x)
+
+## [v5.5.1](https://github.com/laravel/telescope/compare/v5.5.0...v5.5.1) - 2025-03-10
+
+* Check implementation instead of assuming it is View by [@AJenbo](https://github.com/AJenbo) in https://github.com/laravel/telescope/pull/1571
 
 ## [v5.5.0](https://github.com/laravel/telescope/compare/v5.4.0...v5.5.0) - 2025-02-11
 
