@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.5.1...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.6.0...5.x)
+
+## [v5.6.0](https://github.com/laravel/telescope/compare/v5.5.1...v5.6.0) - 2025-03-17
+
+* [5.x] Fix empty avatar on nullable user email by [@ShadyZekry](https://github.com/ShadyZekry) in https://github.com/laravel/telescope/pull/1575
+* Add Hydrated Models Count to Models Table on the Request Details Page by [@niteen1593](https://github.com/niteen1593) in https://github.com/laravel/telescope/pull/1576
 
 ## [v5.5.1](https://github.com/laravel/telescope/compare/v5.5.0...v5.5.1) - 2025-03-10
 
