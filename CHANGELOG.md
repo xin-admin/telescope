@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v5.6.0...5.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v5.7.0...5.x)
+
+## [v5.7.0](https://github.com/laravel/telescope/compare/v5.6.0...v5.7.0) - 2025-03-27
+
+* [5.x] Record plain/text request content by [@cosmastech](https://github.com/cosmastech) in https://github.com/laravel/telescope/pull/1578
 
 ## [v5.6.0](https://github.com/laravel/telescope/compare/v5.5.1...v5.6.0) - 2025-03-17
 
