@@ -1,7 +1,6 @@
 <?php
 
-use Laravel\Telescope\Http\Middleware\Authorize;
-use Laravel\Telescope\Watchers;
+use Xin\Telescope\Watchers;
 
 return [
 
@@ -94,7 +93,6 @@ return [
 
     'middleware' => [
         'web',
-        Authorize::class,
     ],
 
     /*
@@ -201,6 +199,5 @@ return [
         ],
 
         Watchers\ScheduleWatcher::class => env('TELESCOPE_SCHEDULE_WATCHER', true),
-        Watchers\ViewWatcher::class => env('TELESCOPE_VIEW_WATCHER', true),
     ],
 ];

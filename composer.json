@@ -34,13 +34,6 @@
             "Laravel\\Telescope\\Database\\Factories\\": "database/factories/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Laravel\\Telescope\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\": "workbench/database/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
