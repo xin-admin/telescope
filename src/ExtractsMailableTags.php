@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope;
+namespace Xin\Telescope;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -12,7 +12,7 @@ trait ExtractsMailableTags
      *
      * @return void
      */
-    protected static function registerMailableTagExtractor()
+    protected static function registerMailableTagExtractor(): void
     {
         $existingCallback = Mailable::$viewDataCallback;
 

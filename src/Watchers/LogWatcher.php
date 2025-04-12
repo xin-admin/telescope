@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Arr;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 use Psr\Log\LogLevel;
 use Throwable;
 

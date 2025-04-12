@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Http\Client\Events\ConnectionFailed;
 use Illuminate\Http\Client\Events\ResponseReceived;
@@ -8,8 +8,8 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 use Symfony\Component\HttpFoundation\File\File;
 
 class ClientRequestWatcher extends Watcher

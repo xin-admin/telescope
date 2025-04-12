@@ -1,15 +1,15 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Closure;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Str;
-use Laravel\Telescope\ExtractProperties;
-use Laravel\Telescope\ExtractTags;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\ExtractProperties;
+use Xin\Telescope\ExtractTags;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 use ReflectionFunction;
 
 class EventWatcher extends Watcher

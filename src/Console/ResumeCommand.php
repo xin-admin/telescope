@@ -1,9 +1,10 @@
 <?php
 
-namespace Laravel\Telescope\Console;
+namespace Xin\Telescope\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
+use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'telescope:resume')]
@@ -26,8 +27,9 @@ class ResumeCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Illuminate\Contracts\Cache\Repository  $cache
+     * @param CacheRepository $cache
      * @return void
+     * @throws InvalidArgumentException
      */
     public function handle(CacheRepository $cache)
     {

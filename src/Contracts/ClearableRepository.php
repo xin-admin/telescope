@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope\Contracts;
+namespace Xin\Telescope\Contracts;
 
 interface ClearableRepository
 {
@@ -9,5 +9,5 @@ interface ClearableRepository
      *
      * @return void
      */
-    public function clear();
+    public function clear(): void;
 }

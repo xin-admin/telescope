@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\Events\RequestHandled;
@@ -9,9 +9,9 @@ use Illuminate\Http\Response as IlluminateResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Laravel\Telescope\FormatModel;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\FormatModel;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 

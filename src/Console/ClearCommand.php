@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\Telescope\Console;
+namespace Xin\Telescope\Console;
 
 use Illuminate\Console\Command;
-use Laravel\Telescope\Contracts\ClearableRepository;
+use Xin\Telescope\Contracts\ClearableRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'telescope:clear')]
@@ -26,10 +26,10 @@ class ClearCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Laravel\Telescope\Contracts\ClearableRepository  $storage
+     * @param ClearableRepository $storage
      * @return void
      */
-    public function handle(ClearableRepository $storage)
+    public function handle(ClearableRepository $storage): void
     {
         $storage->clear();
 

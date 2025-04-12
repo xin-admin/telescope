@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Database\Events\QueryExecuted;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 
 class QueryWatcher extends Watcher
 {

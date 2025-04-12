@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Mail\Events\MessageSent;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Part\AbstractPart;
 

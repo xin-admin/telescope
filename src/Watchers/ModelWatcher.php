@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Support\Str;
-use Laravel\Telescope\FormatModel;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Storage\EntryModel;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\FormatModel;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Storage\EntryModel;
+use Xin\Telescope\Telescope;
 
 class ModelWatcher extends Watcher
 {

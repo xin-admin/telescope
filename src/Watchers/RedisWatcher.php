@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Redis\Events\CommandExecuted;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 
 class RedisWatcher extends Watcher
 {

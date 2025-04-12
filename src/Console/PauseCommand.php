@@ -1,9 +1,10 @@
 <?php
 
-namespace Laravel\Telescope\Console;
+namespace Xin\Telescope\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
+use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'telescope:pause')]
@@ -26,10 +27,11 @@ class PauseCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Illuminate\Contracts\Cache\Repository  $cache
+     * @param CacheRepository $cache
      * @return void
+     * @throws InvalidArgumentException
      */
-    public function handle(CacheRepository $cache)
+    public function handle(CacheRepository $cache): void
     {
         if (! $cache->get('telescope:pause-recording')) {
             $cache->put('telescope:pause-recording', true, now()->addDays(30));

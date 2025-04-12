@@ -1,15 +1,15 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Events\NotificationSent;
-use Laravel\Telescope\ExtractTags;
-use Laravel\Telescope\FormatModel;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\ExtractTags;
+use Xin\Telescope\FormatModel;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 
 class NotificationWatcher extends Watcher
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Auth\Access\Events\GateEvaluated;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Laravel\Telescope\FormatModel;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\FormatModel;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 
 class GateWatcher extends Watcher
 {

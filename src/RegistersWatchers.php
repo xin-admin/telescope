@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope;
+namespace Xin\Telescope;
 
 trait RegistersWatchers
 {

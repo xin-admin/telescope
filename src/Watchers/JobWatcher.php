@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Bus\BatchRepository;
 use Illuminate\Contracts\Encryption\Encrypter;
@@ -10,13 +10,13 @@ use Illuminate\Queue\Events\JobProcessed;
 use Illuminate\Queue\Queue;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Laravel\Telescope\EntryType;
-use Laravel\Telescope\EntryUpdate;
-use Laravel\Telescope\ExceptionContext;
-use Laravel\Telescope\ExtractProperties;
-use Laravel\Telescope\ExtractTags;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\EntryType;
+use Xin\Telescope\EntryUpdate;
+use Xin\Telescope\ExceptionContext;
+use Xin\Telescope\ExtractProperties;
+use Xin\Telescope\ExtractTags;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 use RuntimeException;
 
 class JobWatcher extends Watcher

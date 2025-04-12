@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\Telescope\Console;
+namespace Xin\Telescope\Console;
 
 use Illuminate\Console\Command;
-use Laravel\Telescope\Contracts\PrunableRepository;
+use Xin\Telescope\Contracts\PrunableRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'telescope:prune')]
@@ -26,7 +26,7 @@ class PruneCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Laravel\Telescope\Contracts\PrunableRepository  $repository
+     * @param PrunableRepository $repository
      * @return void
      */
     public function handle(PrunableRepository $repository)

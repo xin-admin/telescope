@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope;
+namespace Xin\Telescope;
 
 use Closure;
 use Exception;
@@ -11,15 +11,14 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Testing\Fakes\EventFake;
-use Laravel\Telescope\Contracts\EntriesRepository;
-use Laravel\Telescope\Contracts\TerminableRepository;
-use Laravel\Telescope\Jobs\ProcessPendingUpdates;
+use Xin\Telescope\Contracts\EntriesRepository;
+use Xin\Telescope\Contracts\TerminableRepository;
+use Xin\Telescope\Jobs\ProcessPendingUpdates;
 use Throwable;
 
 class Telescope
 {
-    use AuthorizesRequests,
-        ExtractsMailableTags,
+    use ExtractsMailableTags,
         ListensForStorageOpportunities,
         RegistersWatchers;
 
@@ -303,7 +302,7 @@ class Telescope
      * Record the given entry.
      *
      * @param  string  $type
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param IncomingEntry $entry
      * @return void
      */
     protected static function record(string $type, IncomingEntry $entry)
@@ -338,7 +337,7 @@ class Telescope
     /**
      * Record the given entry update.
      *
-     * @param  \Laravel\Telescope\EntryUpdate  $update
+     * @param EntryUpdate $update
      * @return void
      */
     public static function recordUpdate(EntryUpdate $update)
@@ -351,7 +350,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordBatch($entry)
@@ -362,7 +361,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordCache(IncomingEntry $entry)
@@ -373,7 +372,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordCommand(IncomingEntry $entry)
@@ -384,7 +383,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordDump(IncomingEntry $entry)
@@ -395,7 +394,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordEvent(IncomingEntry $entry)
@@ -406,7 +405,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordException(IncomingEntry $entry)
@@ -417,7 +416,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordGate(IncomingEntry $entry)
@@ -428,7 +427,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordJob($entry)
@@ -439,7 +438,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordLog(IncomingEntry $entry)
@@ -450,7 +449,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordMail(IncomingEntry $entry)
@@ -461,7 +460,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordNotification($entry)
@@ -472,7 +471,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordQuery(IncomingEntry $entry)
@@ -483,7 +482,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordModelEvent(IncomingEntry $entry)
@@ -494,7 +493,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordRedis(IncomingEntry $entry)
@@ -505,7 +504,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordRequest(IncomingEntry $entry)
@@ -516,7 +515,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordScheduledCommand(IncomingEntry $entry)
@@ -527,18 +526,7 @@ class Telescope
     /**
      * Record the given entry.
      *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
-     * @return void
-     */
-    public static function recordView(IncomingEntry $entry)
-    {
-        static::record(EntryType::VIEW, $entry);
-    }
-
-    /**
-     * Record the given entry.
-     *
-     * @param  \Laravel\Telescope\IncomingEntry  $entry
+     * @param  IncomingEntry  $entry
      * @return void
      */
     public static function recordClientRequest(IncomingEntry $entry)
@@ -641,7 +629,7 @@ class Telescope
     /**
      * Store the queued entries and flush the queue.
      *
-     * @param  \Laravel\Telescope\Contracts\EntriesRepository  $storage
+     * @param  Contracts\EntriesRepository  $storage
      * @return void
      */
     public static function store(EntriesRepository $storage)
@@ -788,19 +776,6 @@ class Telescope
     public static function night()
     {
         static::$useDarkTheme = true;
-
-        return new static;
-    }
-
-    /**
-     * Register the Telescope user avatar callback.
-     *
-     * @param  \Closure  $callback
-     * @return static
-     */
-    public static function avatar(Closure $callback)
-    {
-        Avatar::register($callback);
 
         return new static;
     }

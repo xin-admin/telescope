@@ -1,48 +1,40 @@
 <?php
 
-namespace Laravel\Telescope\Storage;
+namespace Xin\Telescope\Storage;
 
 use DateTimeInterface;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Laravel\Telescope\Contracts\ClearableRepository;
-use Laravel\Telescope\Contracts\EntriesRepository as Contract;
-use Laravel\Telescope\Contracts\PrunableRepository;
-use Laravel\Telescope\Contracts\TerminableRepository;
-use Laravel\Telescope\EntryResult;
-use Laravel\Telescope\EntryType;
-use Laravel\Telescope\IncomingEntry;
+use Xin\Telescope\Contracts\ClearableRepository;
+use Xin\Telescope\Contracts\EntriesRepository;
+use Xin\Telescope\Contracts\PrunableRepository;
+use Xin\Telescope\Contracts\TerminableRepository;
+use Xin\Telescope\EntryResult;
+use Xin\Telescope\EntryType;
+use Xin\Telescope\EntryUpdate;
+use Xin\Telescope\IncomingEntry;
 
-class DatabaseEntriesRepository implements Contract, ClearableRepository, PrunableRepository, TerminableRepository
+class DatabaseEntriesRepository implements EntriesRepository, ClearableRepository, PrunableRepository, TerminableRepository
 {
     /**
      * The database connection name that should be used.
-     *
-     * @var string
      */
-    protected $connection;
+    protected string $connection;
 
     /**
      * The number of entries that will be inserted at once into the database.
-     *
-     * @var int
      */
-    protected $chunkSize = 1000;
+    protected int $chunkSize = 1000;
 
     /**
      * The tags currently being monitored.
-     *
-     * @var array|null
      */
-    protected $monitoredTags;
+    protected ?array $monitoredTags;
 
     /**
      * Create a new database repository.
-     *
-     * @param  string  $connection
-     * @param  int  $chunkSize
-     * @return void
      */
     public function __construct(string $connection, ?int $chunkSize = null)
     {
@@ -55,11 +47,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Find the entry with the given ID.
-     *
-     * @param  mixed  $id
-     * @return \Laravel\Telescope\EntryResult
      */
-    public function find($id): EntryResult
+    public function find(mixed $id): EntryResult
     {
         $entry = EntryModel::on($this->connection)->whereUuid($id)->firstOrFail();
 
@@ -83,11 +72,11 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
     /**
      * Return all the entries of a given type.
      *
-     * @param  string|null  $type
-     * @param  \Laravel\Telescope\Storage\EntryQueryOptions  $options
-     * @return \Illuminate\Support\Collection|\Laravel\Telescope\EntryResult[]
+     * @param string|null $type
+     * @param EntryQueryOptions $options
+     * @return Collection|EntryResult[]
      */
-    public function get($type, EntryQueryOptions $options)
+    public function get(?string $type, EntryQueryOptions $options): array|Collection
     {
         return EntryModel::on($this->connection)
             ->withTelescopeOptions($type, $options)
@@ -111,11 +100,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Counts the occurences of an exception.
-     *
-     * @param  \Laravel\Telescope\IncomingEntry  $exception
-     * @return int
      */
-    protected function countExceptionOccurences(IncomingEntry $exception)
+    protected function countExceptionOccurences(IncomingEntry $exception): int
     {
         return $this->table('telescope_entries')
                     ->where('type', EntryType::EXCEPTION)
@@ -125,11 +111,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Store the given array of entries.
-     *
-     * @param  \Illuminate\Support\Collection|\Laravel\Telescope\IncomingEntry[]  $entries
-     * @return void
      */
-    public function store(Collection $entries)
+    public function store(Collection $entries): void
     {
         if ($entries->isEmpty()) {
             return;
@@ -154,11 +137,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Store the given array of exception entries.
-     *
-     * @param  \Illuminate\Support\Collection|\Laravel\Telescope\IncomingEntry[]  $exceptions
-     * @return void
      */
-    protected function storeExceptions(Collection $exceptions)
+    protected function storeExceptions(Collection $exceptions): void
     {
         $exceptions->chunk($this->chunkSize)->each(function ($chunked) {
             $this->table('telescope_entries')->insert($chunked->map(function ($exception) {
@@ -183,11 +163,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Store the tags for the given entries.
-     *
-     * @param  \Illuminate\Support\Collection  $results
-     * @return void
      */
-    protected function storeTags(Collection $results)
+    protected function storeTags(Collection $results): void
     {
         $results->chunk($this->chunkSize)->each(function ($chunked) {
             try {
@@ -207,11 +184,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Store the given entry updates and return the failed updates.
-     *
-     * @param  \Illuminate\Support\Collection|\Laravel\Telescope\EntryUpdate[]  $updates
-     * @return \Illuminate\Support\Collection|null
      */
-    public function update(Collection $updates)
+    public function update(Collection $updates): ?Collection
     {
         $failedUpdates = [];
 
@@ -244,11 +218,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Update tags of the given entry.
-     *
-     * @param  \Laravel\Telescope\EntryUpdate  $entry
-     * @return void
      */
-    protected function updateTags($entry)
+    protected function updateTags(EntryUpdate $entry): void
     {
         if (! empty($entry->tagsChanges['added'])) {
             try {
@@ -275,10 +246,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Load the monitored tags from storage.
-     *
-     * @return void
      */
-    public function loadMonitoredTags()
+    public function loadMonitoredTags(): void
     {
         try {
             $this->monitoredTags = $this->monitoring();
@@ -289,11 +258,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Determine if any of the given tags are currently being monitored.
-     *
-     * @param  array  $tags
-     * @return bool
      */
-    public function isMonitoring(array $tags)
+    public function isMonitoring(array $tags): bool
     {
         if (is_null($this->monitoredTags)) {
             $this->loadMonitoredTags();
@@ -304,21 +270,16 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Get the list of tags currently being monitored.
-     *
-     * @return array
      */
-    public function monitoring()
+    public function monitoring(): array
     {
         return $this->table('telescope_monitoring')->pluck('tag')->all();
     }
 
     /**
      * Begin monitoring the given list of tags.
-     *
-     * @param  array  $tags
-     * @return void
      */
-    public function monitor(array $tags)
+    public function monitor(array $tags): void
     {
         $tags = array_diff($tags, $this->monitoring());
 
@@ -335,23 +296,16 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Stop monitoring the given list of tags.
-     *
-     * @param  array  $tags
-     * @return void
      */
-    public function stopMonitoring(array $tags)
+    public function stopMonitoring(array $tags): void
     {
         $this->table('telescope_monitoring')->whereIn('tag', $tags)->delete();
     }
 
     /**
      * Prune all of the entries older than the given date.
-     *
-     * @param  \DateTimeInterface  $before
-     * @param  bool  $keepExceptions
-     * @return int
      */
-    public function prune(DateTimeInterface $before, $keepExceptions)
+    public function prune(DateTimeInterface $before, bool $keepExceptions): int
     {
         $query = $this->table('telescope_entries')
                 ->where('created_at', '<', $before);
@@ -373,10 +327,8 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Clear all the entries.
-     *
-     * @return void
      */
-    public function clear()
+    public function clear(): void
     {
         do {
             $deleted = $this->table('telescope_entries')->take($this->chunkSize)->delete();
@@ -389,21 +341,16 @@ class DatabaseEntriesRepository implements Contract, ClearableRepository, Prunab
 
     /**
      * Perform any clean-up tasks needed after storing Telescope entries.
-     *
-     * @return void
      */
-    public function terminate()
+    public function terminate(): void
     {
         $this->monitoredTags = null;
     }
 
     /**
      * Get a query builder instance for the given table.
-     *
-     * @param  string  $table
-     * @return \Illuminate\Database\Query\Builder
      */
-    protected function table($table)
+    protected function table(string $table): Builder
     {
         return DB::connection($this->connection)->table($table);
     }

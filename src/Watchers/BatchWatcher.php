@@ -1,20 +1,24 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Illuminate\Bus\Events\BatchDispatched;
-use Laravel\Telescope\IncomingEntry;
-use Laravel\Telescope\Telescope;
+use Illuminate\Contracts\Foundation\Application;
+use Xin\Telescope\IncomingEntry;
+use Xin\Telescope\Telescope;
 
+/**
+ * 队列
+ */
 class BatchWatcher extends Watcher
 {
     /**
      * Register the watcher.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  Application  $app
      * @return void
      */
-    public function register($app)
+    public function register($app): void
     {
         $app['events']->listen(BatchDispatched::class, [$this, 'recordBatch']);
     }
@@ -22,10 +26,7 @@ class BatchWatcher extends Watcher
     /**
      * Record a job being created.
      *
-     * @param  string  $connection
-     * @param  string  $queue
-     * @param  array  $payload
-     * @return \Laravel\Telescope\IncomingEntry|null
+     * @return IncomingEntry|void
      */
     public function recordBatch(BatchDispatched $event)
     {

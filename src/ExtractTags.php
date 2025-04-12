@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Telescope;
+namespace Xin\Telescope;
 
 use Illuminate\Broadcasting\BroadcastEvent;
 use Illuminate\Database\Eloquent\Collection;
@@ -19,7 +19,7 @@ class ExtractTags
      * @param  mixed  $target
      * @return array
      */
-    public static function from($target)
+    public static function from(mixed $target): array
     {
         if ($tags = static::explicitTags([$target])) {
             return $tags;

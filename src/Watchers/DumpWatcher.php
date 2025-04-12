@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Telescope\Watchers;
+namespace Xin\Telescope\Watchers;
 
 use Exception;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
-use Laravel\Telescope\IncomingDumpEntry;
-use Laravel\Telescope\Telescope;
+use Xin\Telescope\IncomingDumpEntry;
+use Xin\Telescope\Telescope;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use Symfony\Component\VarDumper\VarDumper;

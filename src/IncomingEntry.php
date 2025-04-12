@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\Telescope;
+namespace Xin\Telescope;
 
 use Illuminate\Support\Str;
-use Laravel\Telescope\Contracts\EntriesRepository;
+use Xin\Telescope\Contracts\EntriesRepository;
 
 class IncomingEntry
 {
